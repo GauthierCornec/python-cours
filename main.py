@@ -4,6 +4,5 @@ def say_hello(name):
     print(f"How are you {name} ?")
 
 n = "bob"
-say_hello(n)
-
+b = "bob"
 print(text2art("Hello"))
