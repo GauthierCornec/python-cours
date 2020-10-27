@@ -1,54 +1,18 @@
-def create_contact(Name, Phone, Fav):
-    contact = {
-        "Name": Name,
-        "Phone": Phone,
-        "Fav": Fav,
-    }
-    return contact
+import sys
+import phonebook
 
-a = create_contact("Pierre", "123456789", True)
-print(a)
+args = sys.argv # récup les args
+for i in range(0, len(args)): # boucle pour arg de 0 à la longueur des args.
+    if args[i] == "-log":
+        print("il est présent")
 
-b = create_contact("Jean", "234567890", True)
-print(b)
+programme = True
 
-c = create_contact("Jacques", "987654321", False)
-print(c)
+while programme:
+    names = input("Entrez nom du nouveau contact")
+    phones = input("Entrez le nouveau numéro de tel")
+    fav = input("est il favoris ?")
 
-d = create_contact("Paul", "87654321", False)
-print(d)
-
-annuaire = {}
-
-def add_contact(c):
-    number_contact = c["Phone"]
-    annuaire[number_contact] = c
-
-Phone = input("Entrez votre numéro")
-print(Phone)
-Name = input("Entrez votre Nom")
-print(Name)
-
-
-contact = create_contact(Name, Phone, False)
-add_contact(contact)
-print(annuaire)
-
-
-def get_names(n):
-    names = []
-    for k in annuaire:
-        contact = annuaire[k]
-        names.append(contact["Name"])
-        names.sort()
-        return names
-
-def display_all():
-    for Phone in annuaire:
-        contact = annuaire[Phone]
-        print(f'{Phone} => {contact}')
-
-def get_contact(Phone):
-    for k in annuaire:
-        if k == Phone:
-            return annuaire[k]
+    c = phonebook.create_contact(names,phones, fav)
+    phonebook.add_contact(c)
+    print(phonebook.annuaire)
